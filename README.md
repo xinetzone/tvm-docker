@@ -35,7 +35,7 @@ invoke config
 invoke make
 ```
 
-如果想要启用 CUDA，只需：
+如果想要启用 CUDA（docker 暂未支持），只需：
 
 ```bash
 invoke config --cuda
