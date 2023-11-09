@@ -1,0 +1,22 @@
+name: py38
+channels:
+  - defaults
+dependencies:
+  - python=3.8
+  - protobuf==3.20.3
+  - numpy
+  - pandas
+  - matplotlib
+  - decorator
+  - scipy
+  - attrs
+  - pandas 
+  - toml 
+  - synr 
+  - matplotlib 
+  - tqdm
+  - six
+  - invoke
+  - pytorch
+  - torchvision
+  # - torchaudio
