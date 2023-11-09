@@ -1,6 +1,3 @@
-<<<<<<< Updated upstream
-# tvm-docker
-=======
 # TVM/VTA Docker
 
 ```bash
@@ -44,4 +41,3 @@ docker run -it -d -v /media/pc/data/lxw/ai/tvm-docker/xinetzone/caffe-env:/data 
 ```bash
 docker run -it -d -v /media/pc/data/lxw/work/workspace:/home/workspace -v /media/pc/data/lxw/home:/media/pc/data/lxw/home -v /media/pc/data/board/arria10/lxw/npu_user_demos:/home/workspace/npu_user_demos xinetzone/tvmx:caffe-conda
 ```
->>>>>>> Stashed changes
