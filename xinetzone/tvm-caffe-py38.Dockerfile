@@ -23,7 +23,8 @@ ENV LANG=C.UTF-8
 # 添加源并更新，添加 TVM 必备包
 RUN apt-get update && apt-get install -y --no-install-recommends apt-utils \
     gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf\
-    && pip install scikit-image protobuf==3.20.3 decorator scipy attrs pandas toml synr d2py invoke --no-cache-dir -i https://pypi.tuna.tsinghua.edu.cn/simple \
+    && pip install scikit-image protobuf==3.20.3 decorator scipy attrs pandas toml synr d2py invoke \
+    onnx matplotlib brevitas --no-cache-dir -i https://pypi.tuna.tsinghua.edu.cn/simple \
     # && apt-get install pkg-config-arm-linux-gnueabihf
     && pip install torch torchvision torchaudio -i https://pypi.tuna.tsinghua.edu.cn/simple --index-url https://download.pytorch.org/whl/cpu --no-cache-dir \
     # libopenjp2-7-dev libgdal-dev \
