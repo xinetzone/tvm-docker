@@ -12,13 +12,13 @@ docker build -t xinetzone/tvmx:conda -f xinetzone/tvm-conda.Dockerfile ./xinetzo
 ## 制作 caffe 包
 
 - `xinetzone/tvmx:caffe-py38`：caffe Python3.8 环境
-- `xinetzone/tvmx:caffe`：TVM 基础环境 + caffe
+- `xinetzone/tvmx:py38`：TVM 基础环境 + caffe 
 - `xinetzone/tvmx:caffe-conda`：TVM 基础环境 + caffe + miniconda
 
 ```bash
 cd xinetzone/caffe-env && invoke tar && cp tasks.py temp/tasks.py && cd ../..
 docker build -t xinetzone/tvmx:caffe-py38 -f xinetzone/caffe-py38.Dockerfile ./xinetzone --no-cache
-docker build -t xinetzone/tvmx:py38 -f xinetzone/tvm-caffe-py38.Dockerfile ./xinetzone
+docker build -t xinetzone/tvmx:py38 -f xinetzone/tvm-caffe-py38.Dockerfile ./xinetzone --no-cache
 docker build -t xinetzone/tvmx:caffe-conda -f xinetzone/tvm-caffe-conda.Dockerfile ./xinetzone --no-cache
 ```
 
