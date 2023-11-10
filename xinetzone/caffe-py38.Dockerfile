@@ -3,13 +3,13 @@ FROM python:3.8.13
 # COPY sources.list /etc/apt/sources.list
 
 # 保证 libopencv-dev 正常安装
-ENV DEBIAN_FRONTEND=noninteractive 
-ENV LANG=C.UTF-8
+# ENV DEBIAN_FRONTEND=noninteractive 
+# ENV LANG=C.UTF-8
 # 添加源并安装一些必需包
 # RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list.d/debian.sources && \
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    git gcc g++ libtinfo-dev zlib1g-dev build-essential make cmake \
-    llvm-11 clang clangd liblldb-dev libedit-dev libxml2-dev \
+RUN sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list \
+    && apt-get update && apt-get install -y --no-install-recommends \
+    gcc g++ make cmake \
     libatlas-base-dev \
     libleveldb-dev \
     liblmdb-dev \

@@ -1,0 +1,30 @@
+# 镜像名称 xinetzone/tvmx:tvm
+FROM xinetzone/tvmx:caffe-full
+# 安装 caffe
+VOLUME /data
+WORKDIR /data
+# COPY sources.list /etc/apt/sources.list
+# 保证 libopencv-dev 正常安装
+# ENV DEBIAN_FRONTEND=noninteractive 
+# ENV LANG=C.UTF-8
+# 添加源并安装一些必需包
+# RUN sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list \
+RUN sed -i s/deb.debian.org/mirrors.ustc.edu.cn/g /etc/apt/sources.list \
+    && apt-get update && apt-get install -y --no-install-recommends \
+    # git gcc g++ libtinfo-dev zlib1g-dev build-essential make cmake \
+    llvm clang clangd liblldb-dev libedit-dev libxml2-dev \
+    gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf \
+    # && apt-get install pkg-config-arm-linux-gnueabihf
+    && pip install torch torchvision torchaudio -i https://pypi.tuna.tsinghua.edu.cn/simple --index-url https://download.pytorch.org/whl/cpu --no-cache-dir \
+    && pip install scikit-image protobuf==3.20.3 decorator scipy attrs pandas toml synr d2py invoke \
+    onnx matplotlib brevitas tqdm nuitka hatch --no-cache-dir -i https://pypi.tuna.tsinghua.edu.cn/simple \
+    # libopenjp2-7-dev libgdal-dev \
+    && rm -rf /var/lib/apt/lists/* 
+# 设置环境变量
+ENV CAFFE_ROOT=/data/caffe
+ENV PYCAFFE_ROOT $CAFFE_ROOT/python
+ENV PYTHONPATH $PYCAFFE_ROOT:$PYTHONPATH
+ENV PATH $CAFFE_ROOT/.build_release/tools:$PYCAFFE_ROOT:$PATH
+RUN echo "$CAFFE_ROOT/.build_release/lib" >> /etc/ld.so.conf.d/caffe.conf && ldconfig
+WORKDIR /home/workspace/
+COPY bugs/cProfile.py /usr/local/lib/python3.8/cProfile.py

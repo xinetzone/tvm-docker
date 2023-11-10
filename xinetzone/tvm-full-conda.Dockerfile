@@ -1,5 +1,5 @@
-# 镜像名称 xinetzone/tvmx:caffe-conda
-FROM xinetzone/tvmx:py38
+# 镜像名称 xinetzone/tvmx:conda-full
+FROM xinetzone/tvmx:tvm
 # 添加 miniconda
 # 配置环境
 RUN mkdir -p ~/miniconda3 \
