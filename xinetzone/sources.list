@@ -1,7 +1,8 @@
-deb http://mirrors.ustc.edu.cn/debian stable main contrib non-free non-free-firmware
-# deb-src http://mirrors.ustc.edu.cn/debian stable main contrib non-free non-free-firmware
-deb http://mirrors.ustc.edu.cn/debian stable-updates main contrib non-free non-free-firmware
-# deb-src http://mirrors.ustc.edu.cn/debian stable-updates main contrib non-free non-free-firmware
-
-# deb http://mirrors.ustc.edu.cn/debian stable-proposed-updates main contrib non-free non-free-firmware
-# deb-src http://mirrors.ustc.edu.cn/debian stable-proposed-updates main contrib non-free non-free-firmware
+# deb http://snapshot.debian.org/archive/debian/20220822T000000Z bullseye main
+deb http://mirrors.ustc.edu.cn/debian bullseye main
+# deb http://snapshot.debian.org/archive/debian-security/20220822T000000Z bullseye-security main
+deb http://mirrors.ustc.edu.cn/debian-security bullseye-security main
+# deb http://snapshot.debian.org/archive/debian/20220822T000000Z bullseye-updates main
+deb http://mirrors.ustc.edu.cn/debian bullseye-updates main
+deb https://mirrors.tuna.tsinghua.edu.cn/llvm-apt/bullseye/ llvm-toolchain-bullseye-12 main
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/llvm-apt/bullseye/ llvm-toolchain-bullseye-12 main

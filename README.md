@@ -22,6 +22,7 @@ docker build -t xinetzone/tvmx:caffe-py38 -f xinetzone/caffe-py38.Dockerfile ./x
 docker build -t xinetzone/tvmx:caffe-full -f xinetzone/caffe-full.Dockerfile ./xinetzone --no-cache
 docker build -t xinetzone/tvmx:tvm -f xinetzone/tvm.Dockerfile ./xinetzone --no-cache
 docker build -t xinetzone/tvmx:tvm-full-conda -f xinetzone/tvm-full-conda.Dockerfile ./xinetzone --no-cache
+docker build -t xinetzone/tvmx:tvm-full-conda-llvm12 -f xinetzone/tvm-full-conda-llvm.Dockerfile ./xinetzone --no-cache
 ```
 
 其中 `/media/pc/data/lxw/ai/tvm-docker/xinetzone/caffe-env` 是 `tvm-docker/xinetzone/caffe-env` 的绝对路径。
@@ -41,5 +42,6 @@ docker run -it -d -v /media/pc/data/lxw/ai/tvm-docker/xinetzone/caffe-env:/data 
 ```
 
 ```bash
-docker run -it -d -v /media/pc/data/lxw/work/workspace:/home/workspace -v /media/pc/data/lxw/home:/media/pc/data/lxw/home -v /media/pc/data/board/arria10/lxw/npu_user_demos:/home/workspace/npu_user_demos xinetzone/tvmx:tvm-full-conda
+docker run -it -d -v /media/pc/data/lxw/work/tasks:/home/workspace -v /media/pc/data/lxw/home:/media/pc/data/lxw/home xinetzone/tvmx:tvm-full-conda
 ```
+

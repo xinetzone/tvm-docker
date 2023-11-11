@@ -1,4 +1,4 @@
-# 镜像名称 xinetzone/tvmx:conda-full
+# 镜像名称 xinetzone/tvmx:tvm-full-conda
 FROM xinetzone/tvmx:tvm
 # 添加 miniconda
 # 配置环境
