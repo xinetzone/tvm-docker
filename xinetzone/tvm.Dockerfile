@@ -12,8 +12,7 @@ WORKDIR /data
 RUN sed -i s/deb.debian.org/mirrors.ustc.edu.cn/g /etc/apt/sources.list \
     && apt-get update && apt-get install -y --no-install-recommends \
     # git gcc g++ libtinfo-dev zlib1g-dev build-essential make cmake \
-    llvm clang clangd liblldb-dev libedit-dev libxml2-dev \
-    gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf \
+    gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf ccache \
     # && apt-get install pkg-config-arm-linux-gnueabihf
     && pip install torch torchvision torchaudio -i https://pypi.tuna.tsinghua.edu.cn/simple --index-url https://download.pytorch.org/whl/cpu --no-cache-dir \
     && pip install scikit-image protobuf==3.20.3 decorator scipy attrs pandas toml synr d2py invoke \

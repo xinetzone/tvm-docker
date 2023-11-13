@@ -42,6 +42,6 @@ docker run -it -d -v /media/pc/data/lxw/ai/tvm-docker/xinetzone/caffe-env:/data 
 ```
 
 ```bash
-docker run -it -d -v /media/pc/data/lxw/work/tasks:/home/workspace -v /media/pc/data/lxw/home:/media/pc/data/lxw/home xinetzone/tvmx:tvm-full-conda
+docker run -it -d -v /media/pc/data/lxw/work/tasks:/home/workspace -v /media/pc/data/lxw/home:/media/pc/data/lxw/home xinetzone/tvmx:tvm-full-conda-llvm12
 ```
 
