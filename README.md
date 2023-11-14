@@ -3,6 +3,7 @@
 ```bash
 docker build -t xinetzone/tvmx:base -f xinetzone/tvm-base.Dockerfile ./xinetzone --no-cache
 docker build -t xinetzone/tvmx:conda -f xinetzone/tvm-conda.Dockerfile ./xinetzone --no-cache
+docker build -t xinetzone/tvmx:pack-tvm -f xinetzone/pack-tvm.Dockerfile ./xinetzone --no-cache
 ```
 
 - `xinetzone/tvmx:base`：TVM 基础环境
@@ -44,4 +45,3 @@ docker run -it -d -v /media/pc/data/lxw/ai/tvm-docker/xinetzone/caffe-env:/data 
 ```bash
 docker run -it -d -v /media/pc/data/lxw/work/tasks:/home/workspace -v /media/pc/data/lxw/home:/media/pc/data/lxw/home xinetzone/tvmx:tvm-full-conda-llvm12
 ```
-
