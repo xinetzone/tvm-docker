@@ -9,5 +9,3 @@ RUN apt-get update && apt install -y --no-install-recommends lsb-release softwar
     && apt-get update && apt install -y --no-install-recommends \
     llvm-12 clang-12 clangd-12 liblldb-dev libedit-dev libxml2-dev \
     && rm -rf /var/lib/apt/lists/* 
-    # && ~/miniconda3/bin/conda init bash \
-    # && ~/miniconda3/bin/conda init zsh

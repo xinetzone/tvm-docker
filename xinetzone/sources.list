@@ -4,5 +4,5 @@ deb http://mirrors.ustc.edu.cn/debian bullseye main
 deb http://mirrors.ustc.edu.cn/debian-security bullseye-security main
 # deb http://snapshot.debian.org/archive/debian/20220822T000000Z bullseye-updates main
 deb http://mirrors.ustc.edu.cn/debian bullseye-updates main
-deb https://mirrors.tuna.tsinghua.edu.cn/llvm-apt/bullseye/ llvm-toolchain-bullseye-11 main
-# deb-src https://mirrors.tuna.tsinghua.edu.cn/llvm-apt/bullseye/ llvm-toolchain-bullseye-12 main
+deb https://mirrors.tuna.tsinghua.edu.cn/llvm-apt/jammy/ llvm-toolchain-jammy-12 main
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/llvm-apt/jammy/ llvm-toolchain-jammy-12 main

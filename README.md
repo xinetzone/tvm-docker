@@ -21,6 +21,7 @@ docker build -t xinetzone/tvmx:pack-tvm -f xinetzone/pack-tvm.Dockerfile ./xinet
 cd xinetzone/caffe-env && invoke tar && cp tasks.py temp/tasks.py && cd ../..
 docker build -t xinetzone/tvmx:caffe-py38 -f xinetzone/caffe-py38.Dockerfile ./xinetzone --no-cache
 docker build -t xinetzone/tvmx:caffe-full -f xinetzone/caffe-full.Dockerfile ./xinetzone --no-cache
+# docker run -it --rm -v /media/pc/data/lxw/ai/tvm-docker/xinetzone/caffe-env/temp:/data xinetzone/tvmx:caffe-full inv compile
 docker build -t xinetzone/tvmx:tvm -f xinetzone/tvm.Dockerfile ./xinetzone --no-cache
 docker build -t xinetzone/tvmx:tvm-full-conda -f xinetzone/tvm-full-conda.Dockerfile ./xinetzone --no-cache
 docker build -t xinetzone/tvmx:tvm-full-conda-llvm12 -f xinetzone/tvm-full-conda-llvm.Dockerfile ./xinetzone --no-cache
