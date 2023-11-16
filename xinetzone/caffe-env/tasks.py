@@ -23,7 +23,7 @@ def compile(ctx):
     cmd += "&& make check -j$(nproc)"
     cmd += "&& make install && ldconfig"
     # 编译 caffe 
-    cmd += "&& cd $CAFFE_ROOT && make all -j$(nproc) && make pycaffe -j$(nproc)"
+    cmd += "&& cd /data/caffe && make all -j$(nproc) && make pycaffe -j$(nproc)"
     # 清理
     cmd += "&& rm -rf /data/boost-1.81.0/ && rm -rf /data/protobuf-3.17.3/"
     ctx.run(cmd)
