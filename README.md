@@ -1,5 +1,7 @@
 # 构建 TVM 流程
 
+在 `docker/` 下构建：
+
 0. 构建 TVM 基础环境：
     ```bash
     docker build -f tvm-base.Dockerfile -t xinetzone/tvmx:tvm-base . --no-cache
@@ -19,4 +21,10 @@
     docker build -t xinetzone/tvmx:tvm -f tvm.Dockerfile . --no-cache
     ```
 
+## conda 镜像
+
+```bash
+docker build -t xinetzone/tvmx:tvm-conda -f tvm-conda.Dockerfile . --no-cache
+docker build -t xinetzone/tvmx:tvm-conda-caffe -f tvm-conda-caffe.Dockerfile . --no-cache
+```
 

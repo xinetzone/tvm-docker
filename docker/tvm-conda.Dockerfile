@@ -1,5 +1,5 @@
-# 镜像名称 xinetzone/tvmx:tvm-base
-FROM ubuntu:22.04
+# 镜像名称 xinetzone/tvmx:tvm-conda
+FROM continuumio/miniconda3
 COPY utils/apt-install-and-clear.sh /usr/local/bin/apt-install-and-clear
 RUN apt-get update --fix-missing
 COPY install/ubuntu_setup_tz.sh /install/ubuntu_setup_tz.sh
@@ -11,9 +11,9 @@ RUN bash /install/ubuntu_install_core.sh
 # 安装 cmake
 COPY install/ubuntu_install_cmake_source.sh /install/ubuntu_install_cmake_source.sh
 RUN bash /install/ubuntu_install_cmake_source.sh
-# 安装 PAPI
-COPY install/ubuntu_install_papi.sh /install/ubuntu_install_papi.sh
-RUN bash /install/ubuntu_install_papi.sh ""
+# # 安装 PAPI
+# COPY install/ubuntu_install_papi.sh /install/ubuntu_install_papi.sh
+# RUN bash /install/ubuntu_install_papi.sh ""
 # # BYODT deps
 # COPY install/ubuntu_install_universal.sh /install/ubuntu_install_universal.sh
 # RUN bash /install/ubuntu_install_universal.sh
