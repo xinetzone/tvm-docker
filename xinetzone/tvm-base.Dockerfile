@@ -8,6 +8,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends apt-utils \
     git gcc g++ libtinfo-dev zlib1g-dev build-essential make cmake \
     clang clangd llvm liblldb-dev libedit-dev libxml2-dev \
     gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf pip \
-    && pip install decorator scipy attrs pandas toml synr d2py --no-cache-dir \
+    && pip install decorator scipy attrs pandas toml synr --no-cache-dir \
     # && apt-get install pkg-config-arm-linux-gnueabihf
     && rm -rf /var/lib/apt/lists/* 
