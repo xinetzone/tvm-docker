@@ -33,4 +33,4 @@ RUN echo "$CAFFE_ROOT/.build_release/lib" >> /etc/ld.so.conf.d/caffe.conf && ldc
 VOLUME [ "/data", "/home" ]
 WORKDIR /data
 COPY xinetzone/caffe-env /data
-RUN invoke tar && invoke compile
+RUN python3 -m invoke tar && invoke compile
