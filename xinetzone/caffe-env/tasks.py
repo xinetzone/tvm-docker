@@ -1,18 +1,6 @@
 from invoke import task
 
 @task
-def tar(ctx):
-    # 清除遗留文件
-    cmd = "rm -rf temp&&mkdir -p temp"
-    # 解压文件
-    cmd += "&& tar -zxvf caffe.tar.gz && tar -xvf boost-1.81.0.tar.gz" 
-    cmd += "&& tar -zxvf protobuf-3.17.3.tar.gz "
-    cmd += "&& mkdir -p temp && mv protobuf-3.17.3 temp/protobuf-3.17.3"
-    cmd += "&& mv caffe/ temp/caffe/"
-    cmd += "&& mv boost-1.81.0/ temp/boost-1.81.0/"
-    ctx.run(cmd)
-
-@task
 def compile(ctx):
     # 编译 bootst
     cmd = "cd /data/boost-1.81.0/ && ./bootstrap.sh"
