@@ -1,0 +1,38 @@
+name: Docker Caffe Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Build and save the caffe Docker image
+      run: |
+        docker build . --file hub/caffe.Dockerfile --tag xinetzone/caffe-base
+        # docker load -i caffe-conda.tar
+        mkdir -p .temp/
+        cd .temp/
+        docker save xinetzone/caffe-base -o "xinetzone-caffe-base.tar"
+
+    - name: Compress the TAR files
+      run: tar -czvf xinetzone-images.tar.gz .temp/
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: caffe-xinetzone-images-tar
+        path: xinetzone-images.tar.gz
+        retention-days: 1  # 将保留天数设置为 1 天 最多可设置90天
+
+    - name: Clean up intermediate files
+      run: |
+        rm -rf .temp/
