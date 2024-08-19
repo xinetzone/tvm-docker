@@ -5,8 +5,12 @@
 # FROM ubuntu:latest
 # COPY --from=builder /caffe_src /data/caffe_src
 # 镜像名称 caffe-py38
-FROM xinetzone/tvmx:cpu-caffe-torch as caffe-env
-WORKDIR /data
-FROM python:3.8
-WORKDIR /data
+# FROM xinetzone/tvmx:cpu-caffe-torch as caffe-env
+# WORKDIR /data
+# FROM python:3.8
+# WORKDIR /data
 # COPY --from=caffe-env /opt/caffe ./
+FROM xinetzone/tvmx:cpu-caffe-torch
+COPY ./update_caffe.sh /data
+WORKDIR /data
+RUN bash update_caffe.sh
