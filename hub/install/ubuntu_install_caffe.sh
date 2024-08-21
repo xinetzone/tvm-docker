@@ -36,7 +36,7 @@ pip install "numpy" "protobuf" "scikit-image" "six"
 # Build the Caffe and the python wrapper
 echo "Downloading Caffe"
 CAFFE_HOME="/opt/caffe"
-git clone --branch=ssd --depth 1 https://github.com/weiliu89/caffe /caffe_src
+git clone --branch=ssd --depth 1 git@github.com:xinetzone/caffe.git /caffe_src
 cd /caffe_src
 
 
@@ -44,7 +44,6 @@ echo "Building Caffe"
 mkdir /caffe_src/build && cd /caffe_src/build
 cmake -DCMAKE_INSTALL_PREFIX=${CAFFE_HOME}\
     -DCMAKE_BUILD_TYPE=Release \
-    -DCPU_ONLY=1 \
     -Dpython_version=3 \
     -DUSE_OPENCV=OFF \
     -DUSE_LEVELDB=OFF \
