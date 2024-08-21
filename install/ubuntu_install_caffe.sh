@@ -34,7 +34,6 @@ CAFFE_HOME="/opt/caffe"
 git clone https://github.com/xinetzone/caffe.git /caffe_src
 cd /caffe_src
 
-
 echo "Building Caffe"
 mkdir /caffe_src/build && cd /caffe_src/build
 cmake -DCMAKE_INSTALL_PREFIX=${CAFFE_HOME}\

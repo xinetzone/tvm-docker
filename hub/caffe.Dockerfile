@@ -21,5 +21,6 @@ RUN apt-get update --fix-missing
 
 # Caffe & Caffe deps
 COPY install/ubuntu_install_caffe.sh /install/ubuntu_install_caffe.sh
-RUN conda install -c conda-forge libstdcxx-ng boost make cmake \
+RUN apt-install-and-clear -y --no-install-recommends build-essential\
+    && conda install -c conda-forge libstdcxx-ng boost make cmake \
     && bash /install/ubuntu_install_caffe.sh
