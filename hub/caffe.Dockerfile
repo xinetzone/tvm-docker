@@ -19,6 +19,9 @@ FROM continuumio/miniconda3
 COPY utils/apt-install-and-clear.sh /usr/local/bin/apt-install-and-clear
 RUN apt-get update --fix-missing
 
+COPY install/ubuntu_install_googletest.sh /install/ubuntu_install_googletest.sh
+RUN bash /install/ubuntu_install_googletest.sh
+
 # Caffe & Caffe deps
 COPY install/ubuntu_install_caffe.sh /install/ubuntu_install_caffe.sh
 RUN apt-install-and-clear -y --no-install-recommends build-essential\
