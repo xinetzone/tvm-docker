@@ -21,4 +21,4 @@ RUN apt-get update --fix-missing
 
 # Caffe & Caffe deps
 COPY install/ubuntu_install_caffe.sh /install/ubuntu_install_caffe.sh
-RUN conda install conda-forge::boost && bash /install/ubuntu_install_caffe.sh
+RUN conda install conda-forge::boost make cmake g++ gcc && bash /install/ubuntu_install_caffe.sh
