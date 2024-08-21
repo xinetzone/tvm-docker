@@ -31,7 +31,7 @@ pip install "numpy" "protobuf" "scikit-image" "six"
 # Build the Caffe and the python wrapper
 echo "Downloading Caffe"
 CAFFE_HOME="/opt/caffe"
-git clone --branch=ssd --depth 1 git@github.com:xinetzone/caffe.git /caffe_src
+git clone https://github.com/xinetzone/caffe.git /caffe_src
 cd /caffe_src
 
 
