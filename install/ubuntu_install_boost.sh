@@ -17,6 +17,8 @@
 # under the License.
 
 set -euxo pipefail
+
+apt-install-and-clear -y --no-install-recommends curl
 # sudo apt-get install python3-dev -y --no-install-recommends
 curl -LO https://boostorg.jfrog.io/artifactory/main/release/1.81.0/source/boost_1_81_0.tar.gz
 tar -xf boost_1_81_0.tar.gz
