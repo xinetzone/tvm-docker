@@ -16,13 +16,13 @@
 # RUN bash update_caffe.sh
 FROM ubuntu:22.04
 
-COPY utils/apt-install-and-clear.sh /usr/local/bin/apt-install-and-clear
+COPY hub/utils/apt-install-and-clear.sh /usr/local/bin/apt-install-and-clear
 RUN apt-get update --fix-missing
 
 # Caffe deps
-COPY install/ubuntu_install_boost.sh /install/ubuntu_install_boost.sh
+COPY hub/install/ubuntu_install_boost.sh /install/ubuntu_install_boost.sh
 RUN bash /install/ubuntu_install_boost.sh
 
 # Caffe
-COPY install/ubuntu_install_caffe.sh /install/ubuntu_install_caffe.sh
+COPY hub/install/ubuntu_install_caffe.sh /install/ubuntu_install_caffe.sh
 RUN bash /install/ubuntu_install_caffe.sh
