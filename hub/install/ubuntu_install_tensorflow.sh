@@ -20,6 +20,4 @@ set -e
 set -u
 set -o pipefail
 
-pip3 install \
-    keras==2.9 \
-    tensorflow==2.9.1
+pip3 install keras tensorflow
