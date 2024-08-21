@@ -14,15 +14,11 @@
 # COPY ./update_caffe.sh /data
 # WORKDIR /data
 # RUN bash update_caffe.sh
-FROM ubuntu:22.04
+FROM continuumio/miniconda3
 
 COPY utils/apt-install-and-clear.sh /usr/local/bin/apt-install-and-clear
 RUN apt-get update --fix-missing
 
-# Caffe deps
-COPY install/ubuntu_install_boost.sh /install/ubuntu_install_boost.sh
-RUN bash /install/ubuntu_install_boost.sh
-
-# Caffe
+# Caffe & Caffe deps
 COPY install/ubuntu_install_caffe.sh /install/ubuntu_install_caffe.sh
-RUN bash /install/ubuntu_install_caffe.sh
+RUN conda install conda-forge::boost && bash /install/ubuntu_install_caffe.sh
