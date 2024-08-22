@@ -47,19 +47,17 @@ WORKDIR /caffe_src/python
 # SHELL ["conda", "run", "-n", "py310", "/bin/bash", "-cex"]
 # 构建 caffe 包
 RUN cd /caffe_src/python/ && conda run -n py310 /bin/bash -cex python3 -m pip install nuitka \
-    && conda run -n py310 /bin/bash -cex python3 -m nuitka --module caffe --include-package=caffe
-# RUN conda run -n py310  python3 -m pip install nuitka \
-#     && conda run -n py310 python3 -m nuitka --module caffe --include-package=caffe \
-#     conda run -n py311  python3 -m pip install nuitka \
-#     && conda run -n py311 python3 -m nuitka --module caffe --include-package=caffe \
-#     conda run -n py312 python3 -m pip install nuitka \
-#     && conda run -n py312 python3 -m nuitka --module caffe --include-package=caffe \
-#     && mkdir -p /data/libs && mv *.so /data/libs
+    && conda run -n py310 /bin/bash -cex python3 -m nuitka --module caffe --include-package=caffe \
+    && conda run -n py311 /bin/bash -cex python3 -m pip install nuitka \
+    && conda run -n py311 /bin/bash -cex python3 -m nuitka --module caffe --include-package=caffe \
+    && conda run -n py312 /bin/bash -cex python3 -m pip install nuitka \
+    && conda run -n py312 /bin/bash -cex python3 -m nuitka --module caffe --include-package=caffe \
+    && mkdir -p /data/libs && mv *.so /data/libs
 
-# # 第二阶段
-# FROM continuumio/miniconda3
+# 第二阶段
+FROM continuumio/miniconda3
 
-# WORKDIR /data
+WORKDIR /data
 
-# COPY --from=0 /caffe_src .
-# COPY --from=0 /data/libs ./libs
+COPY --from=0 /caffe_src .
+COPY --from=0 /data/libs ./libs
