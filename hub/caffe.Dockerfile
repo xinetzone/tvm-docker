@@ -51,13 +51,10 @@ RUN cd /caffe_src/python/ && conda run -n py310 /bin/bash -cex python3 -m pip in
     && conda run -n py311 /bin/bash -cex python3 -m pip install nuitka \
     && conda run -n py311 /bin/bash -cex python3 -m nuitka --module caffe --include-package=caffe \
     && conda run -n py312 /bin/bash -cex python3 -m pip install nuitka \
-    && conda run -n py312 /bin/bash -cex python3 -m nuitka --module caffe --include-package=caffe \
-    && mkdir -p /data/libs && mv *.so /data/libs
+    && conda run -n py312 /bin/bash -cex python3 -m nuitka --module caffe --include-package=caffe
 
 # 第二阶段
 FROM continuumio/miniconda3
 
 WORKDIR /data
-
 COPY --from=0 /caffe_src .
-COPY --from=0 /data/libs ./libs
