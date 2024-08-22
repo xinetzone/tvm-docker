@@ -28,8 +28,19 @@
 # RUN conda install -c conda-forge anaconda::mkl gtest libstdcxx-ng boost make cmake \
 #     && bash /install/ubuntu_install_caffe.sh
 FROM xinetzone/tvmx:caffe-full
-RUN python -c "import caffe"
-# RUN conda create -n py310 python=3.10
+COPY utils/apt-install-and-clear.sh /usr/local/bin/apt-install-and-clear
+# 安装 conda
+RUN apt-get update && \
+    apt-get install -y wget bzip2
+RUN apt-get update --fix-missing \
+    && apt-install-and-clear -y --no-install-recommends wget bzip2
+# 下载Miniconda安装脚本
+RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
+# 运行安装脚本并删除它
+RUN bash miniconda.sh -b -p /opt/conda && rm miniconda.sh
+# 设置环境变量以使用Miniconda
+ENV PATH="/opt/conda/bin:$PATH"
+RUN conda create -n py310 python=3.10
 # # Make RUN commands use the new environment (https://kevalnagda.github.io/conda-docker-tutorial)
 # SHELL ["conda", "run", "-n", "py310", "/bin/bash", "-c"]
 # RUN pip install nuitka && cd /caffe_src/python \
