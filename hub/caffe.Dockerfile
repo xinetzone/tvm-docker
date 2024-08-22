@@ -27,7 +27,7 @@
 # 
 # RUN conda install -c conda-forge anaconda::mkl gtest libstdcxx-ng boost make cmake \
 #     && bash /install/ubuntu_install_caffe.sh
-FROM xinetzone/tvmx:caffe-py38
+FROM xinetzone/tvmx:caffe-full
 RUN python -c "import caffe"
 # RUN conda create -n py310 python=3.10
 # # Make RUN commands use the new environment (https://kevalnagda.github.io/conda-docker-tutorial)
