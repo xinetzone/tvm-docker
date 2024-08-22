@@ -59,4 +59,4 @@ RUN cd /caffe_src/python/ && conda run -n py310 /bin/bash -cex python3 -m pip in
 FROM continuumio/miniconda3
 
 WORKDIR /data
-COPY --from=builder caffe_src.tar.gz caffe_src.tar.gz
+COPY --from=builder /caffe_src/python/caffe.cpython-39-x86_64-linux-gnu.so caffe.cpython-39-x86_64-linux-gnu.so
