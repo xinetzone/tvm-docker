@@ -26,7 +26,7 @@ apt-install-and-clear -y --no-install-recommends protobuf-compiler \
 
 
 # install python packages
-pip install "numpy" "protobuf" "scikit-image" "six"
+pip install "numpy" "protobuf==3.20.3" "scikit-image" "six"
 
 # Build the Caffe and the python wrapper
 echo "Downloading Caffe"
@@ -43,7 +43,7 @@ cmake -DCMAKE_INSTALL_PREFIX=${CAFFE_HOME}\
     -DUSE_LEVELDB=OFF \
     -DUSE_LMDB=OFF \
     -DBUILD_docs=OFF \
-    -DBLAS=open \
+    -DBLAS=OFF \
     ..
 
 make all -j$(expr $(nproc) - 1)
