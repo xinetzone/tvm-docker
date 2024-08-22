@@ -21,9 +21,9 @@ RUN apt-get update --fix-missing
 
 # Caffe & Caffe deps
 COPY install/ubuntu_install_caffe.sh /install/ubuntu_install_caffe.sh
-RUN conda init bash
+RUN conda create -n py310 python=3.10
+# Make RUN commands use the new environment:
+SHELL ["conda", "run", "-n", "py310", "/bin/bash", "-c"]
 RUN apt-install-and-clear -y --no-install-recommends clang g++ gcc \
-    && conda create -n py310 python=3.10 \
-    && conda activate py310 \
     && conda install -c conda-forge anaconda::mkl gtest libstdcxx-ng boost make cmake \
     && bash /install/ubuntu_install_caffe.sh
