@@ -27,7 +27,7 @@
 # 
 # RUN conda install -c conda-forge anaconda::mkl gtest libstdcxx-ng boost make cmake \
 #     && bash /install/ubuntu_install_caffe.sh
-FROM xinetzone/tvmx:caffe-full
+FROM xinetzone/tvmx:caffe-full as builder
 COPY utils/apt-install-and-clear.sh /usr/local/bin/apt-install-and-clear
 # 安装 conda
 RUN apt-get update && \
@@ -57,4 +57,4 @@ RUN cd /caffe_src/python/ && conda run -n py310 /bin/bash -cex python3 -m pip in
 FROM continuumio/miniconda3
 
 WORKDIR /data
-COPY --from=0 /caffe_src/* .
+COPY --from=builder /caffe_src/ /caffe_src
