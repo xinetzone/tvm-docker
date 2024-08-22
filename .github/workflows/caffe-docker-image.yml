@@ -21,7 +21,8 @@ jobs:
         # docker load -i caffe-conda.tar
         mkdir -p .temp/
         cd .temp/
-        docker save xinetzone/caffe-conda -o "caffe-conda.tar"
+        docker run -it --rm xinetzone/caffe-conda
+        # docker save xinetzone/caffe-conda -o "caffe-conda.tar"
 
     - name: Compress the TAR files
       run: tar -czvf xinetzone-images.tar.gz .temp/

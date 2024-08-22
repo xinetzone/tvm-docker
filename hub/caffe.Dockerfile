@@ -43,20 +43,17 @@ ENV PATH="/opt/conda/bin:$PATH"
 WORKDIR /caffe_src/python
 RUN conda create -n py310 python=3.10 && conda create -n py311 python=3.11 && conda create -n py312 python=3.12
 # Make RUN commands use the new environment (https://kevalnagda.github.io/conda-docker-tutorial)
-WORKDIR /caffe_src/python
+
 # SHELL ["conda", "run", "-n", "py310", "/bin/bash", "-cex"]
-# 构建 caffe 包
+# # 构建 caffe 包
 RUN cd /caffe_src/python/ && conda run -n py310 /bin/bash -c python3 -m pip install nuitka \
-    && conda run -n py310 /bin/bash -c python3 -m nuitka --module caffe --include-package=caffe \
     && conda run -n py311 /bin/bash -c python3 -m pip install nuitka \
-    && conda run -n py311 /bin/bash -c python3 -m nuitka --module caffe --include-package=caffe \
-    && conda run -n py312 /bin/bash -c python3 -m pip install nuitka \
-    && conda run -n py312 /bin/bash -c python3 -m nuitka --module caffe --include-package=caffe \
-    && cd / && tar -czvf caffe_src.tar.gz /caffe_src/*
+    && conda run -n py312 /bin/bash -c python3 -m pip install nuitka
 
+WORKDIR /caffe_src/python
 
-# 第二阶段
-FROM continuumio/miniconda3
+# # 第二阶段
+# FROM continuumio/miniconda3
 
-WORKDIR /data
-COPY --from=builder /caffe_src/python/caffe.cpython-39-x86_64-linux-gnu.so caffe.cpython-39-x86_64-linux-gnu.so
+# WORKDIR /data
+# # COPY --from=builder /caffe_src/python/caffe.cpython-39-x86_64-linux-gnu.so caffe.cpython-39-x86_64-linux-gnu.so
