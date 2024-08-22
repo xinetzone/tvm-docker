@@ -40,9 +40,9 @@ RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -
 RUN bash miniconda.sh -b -p /opt/conda && rm miniconda.sh
 # 设置环境变量以使用Miniconda
 ENV PATH="/opt/conda/bin:$PATH"
+WORKDIR /caffe_src/python
 RUN conda create -n py310 python=3.10
 # Make RUN commands use the new environment (https://kevalnagda.github.io/conda-docker-tutorial)
 SHELL ["conda", "run", "-n", "py310", "/bin/bash", "-c"]
-RUN pip install nuitka && cd /caffe_src/python \
-    && python3 -m nuitka --module caffe/ --include-package=caffe \
-    && ls
+RUN pip install nuitka \
+    && python3 -m nuitka --module caffe/ --include-package=caffe
