@@ -28,9 +28,10 @@
 # RUN conda install -c conda-forge anaconda::mkl gtest libstdcxx-ng boost make cmake \
 #     && bash /install/ubuntu_install_caffe.sh
 FROM xinetzone/tvmx:caffe-torch
-RUN conda create -n py310 python=3.10
-# Make RUN commands use the new environment (https://kevalnagda.github.io/conda-docker-tutorial)
-SHELL ["conda", "run", "-n", "py310", "/bin/bash", "-c"]
-RUN pip install nuitka && cd /caffe_src/python \
-    && python3 -m nuitka --module caffe/ --include-package=caffe \
-    && ls
+RUN python -c "import caffe"
+# RUN conda create -n py310 python=3.10
+# # Make RUN commands use the new environment (https://kevalnagda.github.io/conda-docker-tutorial)
+# SHELL ["conda", "run", "-n", "py310", "/bin/bash", "-c"]
+# RUN pip install nuitka && cd /caffe_src/python \
+#     && python3 -m nuitka --module caffe/ --include-package=caffe \
+#     && ls
