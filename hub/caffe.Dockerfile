@@ -58,5 +58,5 @@
 
 FROM continuumio/miniconda3
 WORKDIR /data
-COPY libs /data/libs
+COPY hub/libs /data/libs
 # # COPY --from=builder /caffe_src/python/caffe.cpython-39-x86_64-linux-gnu.so caffe.cpython-39-x86_64-linux-gnu.so
