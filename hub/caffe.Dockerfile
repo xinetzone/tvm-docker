@@ -27,7 +27,7 @@
 # 
 # RUN conda install -c conda-forge anaconda::mkl gtest libstdcxx-ng boost make cmake \
 #     && bash /install/ubuntu_install_caffe.sh
-FROM xinetzone/conda-caffe
+FROM xinetzone/tvmx:cpu-caffe-torch
 RUN conda create -n py310 python=3.10
 # Make RUN commands use the new environment:
 SHELL ["conda", "run", "-n", "py310", "/bin/bash", "-c"]
