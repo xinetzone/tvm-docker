@@ -57,4 +57,4 @@ RUN cd /caffe_src/python/ && conda run -n py310 /bin/bash -cex python3 -m pip in
 FROM continuumio/miniconda3
 
 WORKDIR /data
-COPY --from=0 /caffe_src .
+COPY --from=0 /caffe_src/* .
