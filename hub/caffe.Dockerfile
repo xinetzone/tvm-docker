@@ -21,8 +21,8 @@ RUN apt-get update --fix-missing
 
 # Caffe & Caffe deps
 COPY install/ubuntu_install_caffe.sh /install/ubuntu_install_caffe.sh
+RUN conda init bash
 RUN apt-install-and-clear -y --no-install-recommends clang g++ gcc \
-    && conda init bash \
     && conda create -n py310 python=3.10 \
     && conda activate py310 \
     && conda install -c conda-forge anaconda::mkl gtest libstdcxx-ng boost make cmake \
