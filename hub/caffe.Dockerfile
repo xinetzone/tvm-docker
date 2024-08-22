@@ -14,16 +14,23 @@
 # COPY ./update_caffe.sh /data
 # WORKDIR /data
 # RUN bash update_caffe.sh
-FROM continuumio/miniconda3
+# FROM continuumio/miniconda3
 
-COPY utils/apt-install-and-clear.sh /usr/local/bin/apt-install-and-clear
-RUN apt-get update --fix-missing
+# COPY utils/apt-install-and-clear.sh /usr/local/bin/apt-install-and-clear
+# RUN apt-get update --fix-missing \
+#     && apt-install-and-clear -y --no-install-recommends clang g++ gcc
 
-# Caffe & Caffe deps
-COPY install/ubuntu_install_caffe.sh /install/ubuntu_install_caffe.sh
+# # Caffe & Caffe deps
+# COPY install/ubuntu_install_caffe.sh /install/ubuntu_install_caffe.sh
+# RUN conda create -n py310 python=3.10
+# # Make RUN commands use the new environment:
+# 
+# RUN conda install -c conda-forge anaconda::mkl gtest libstdcxx-ng boost make cmake \
+#     && bash /install/ubuntu_install_caffe.sh
+FROM xinetzone/tvmx:tvm-conda-caffe
 RUN conda create -n py310 python=3.10
 # Make RUN commands use the new environment:
 SHELL ["conda", "run", "-n", "py310", "/bin/bash", "-c"]
-RUN apt-install-and-clear -y --no-install-recommends clang g++ gcc \
-    && conda install -c conda-forge anaconda::mkl gtest libstdcxx-ng boost make cmake \
-    && bash /install/ubuntu_install_caffe.sh
+RUN pip install nuitka && cd /caffe_src/python \
+    && python3 -m nuitka --module caffe/ --include-package=caffe \
+    && ls
