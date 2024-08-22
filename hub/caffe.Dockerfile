@@ -41,7 +41,7 @@ RUN bash miniconda.sh -b -p /opt/conda && rm miniconda.sh
 # 设置环境变量以使用Miniconda
 ENV PATH="/opt/conda/bin:$PATH"
 WORKDIR /caffe_src/python
-RUN conda create -n py310 python=3.10 && conda create -n py310 python=3.11 && conda create -n py310 python=3.12
+RUN conda create -n py310 python=3.10 && conda create -n py311 python=3.11 && conda create -n py312 python=3.12
 # Make RUN commands use the new environment (https://kevalnagda.github.io/conda-docker-tutorial)
 WORKDIR /caffe_src/python
 # SHELL ["conda", "run", "-n", "py310", "/bin/bash", "-cex"]
