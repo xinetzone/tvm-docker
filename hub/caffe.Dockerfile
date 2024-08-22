@@ -44,5 +44,6 @@ WORKDIR /caffe_src/python
 RUN conda create -n py310 python=3.10
 # Make RUN commands use the new environment (https://kevalnagda.github.io/conda-docker-tutorial)
 SHELL ["conda", "run", "-n", "py310", "/bin/bash", "-c"]
-RUN python3 -m pip install nuitka && cd /caffe_src/python \
+WORKDIR /caffe_src/python 
+RUN python3 -m pip install nuitka \
     && python3 -m nuitka --module caffe --include-package=caffe
