@@ -44,6 +44,7 @@ cmake -DCMAKE_INSTALL_PREFIX=${CAFFE_HOME}\
     -DUSE_LMDB=OFF \
     -DBUILD_docs=OFF \
     -DBLAS=OFF \
+    -DUSE_MKLDNN=OFF \
     ..
 
 make all -j$(expr $(nproc) - 1)
