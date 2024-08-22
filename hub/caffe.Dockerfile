@@ -46,13 +46,13 @@ RUN conda create -n py310 python=3.10 && conda create -n py311 python=3.11 && co
 WORKDIR /caffe_src/python
 # SHELL ["conda", "run", "-n", "py310", "/bin/bash", "-cex"]
 # 构建 caffe 包
-RUN cd /caffe_src/python/ && conda run -n py310 /bin/bash -cex python3 -m pip install nuitka \
-    && conda run -n py310 /bin/bash -cex python3 -m nuitka --module caffe --include-package=caffe \
-    && conda run -n py311 /bin/bash -cex python3 -m pip install nuitka \
-    && conda run -n py311 /bin/bash -cex python3 -m nuitka --module caffe --include-package=caffe \
-    && conda run -n py312 /bin/bash -cex python3 -m pip install nuitka \
-    && conda run -n py312 /bin/bash -cex python3 -m nuitka --module caffe --include-package=caffe \
-    && cd / && tar -czvf caffe_src.tar.gz /caffe_src
+RUN cd /caffe_src/python/ && conda run -n py310 /bin/bash -c python3 -m pip install nuitka \
+    && conda run -n py310 /bin/bash -c python3 -m nuitka --module caffe --include-package=caffe \
+    && conda run -n py311 /bin/bash -c python3 -m pip install nuitka \
+    && conda run -n py311 /bin/bash -c python3 -m nuitka --module caffe --include-package=caffe \
+    && conda run -n py312 /bin/bash -c python3 -m pip install nuitka \
+    && conda run -n py312 /bin/bash -c python3 -m nuitka --module caffe --include-package=caffe \
+    && cd / && tar -czvf caffe_src.tar.gz /caffe_src/*
 
 
 # 第二阶段
