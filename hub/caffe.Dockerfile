@@ -46,8 +46,8 @@ RUN conda create -n py310 python=3.10 && conda create -n py310 python=3.11 && co
 WORKDIR /caffe_src/python
 SHELL ["conda", "run", "-n", "py310", "/bin/bash", "-cex"]
 # 构建 caffe 包
-RUN python3 -m pip install nuitka \
-    && python3 -m nuitka --module caffe --include-package=caffe 
+RUN python3 -m pip install nuitka
+RUN python3 -m nuitka --module caffe --include-package=caffe 
 # RUN conda run -n py310  python3 -m pip install nuitka \
 #     && conda run -n py310 python3 -m nuitka --module caffe --include-package=caffe \
 #     conda run -n py311  python3 -m pip install nuitka \
