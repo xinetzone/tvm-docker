@@ -22,5 +22,5 @@ RUN apt-get update --fix-missing
 # Caffe & Caffe deps
 COPY install/ubuntu_install_caffe.sh /install/ubuntu_install_caffe.sh
 RUN apt-install-and-clear -y --no-install-recommends clang g++ gcc \
-    && conda install -c conda-forge gtest libstdcxx-ng boost make cmake \
+    && conda install -c conda-forge anaconda::mkl gtest libstdcxx-ng boost make cmake \
     && bash /install/ubuntu_install_caffe.sh
